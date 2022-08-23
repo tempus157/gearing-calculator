@@ -52,7 +52,7 @@ function OutputCard() {
   return (
     <Card>
       <FakeGraph />
-      <Box m={1}>
+      <Box m={1} display="grid" justifyContent="center">
         <ExpandMoreButton expand={expanded} onClick={handleExpandClick}>
           <ExpandMore />
         </ExpandMoreButton>
