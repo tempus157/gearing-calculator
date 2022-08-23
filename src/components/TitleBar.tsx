@@ -1,12 +1,16 @@
 import { AppBar, styled, Toolbar } from "@mui/material";
 
-function TitleBar() {
+interface TitleBarProps {
+  text: string;
+}
+
+function TitleBar({ text }: TitleBarProps) {
   const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
   return (
     <>
       <AppBar>
-        <Toolbar>Gearing Calculator</Toolbar>
+        <Toolbar>{text}</Toolbar>
       </AppBar>
       <Offset />
     </>
