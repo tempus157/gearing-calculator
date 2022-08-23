@@ -1,13 +1,20 @@
 import { Card, CardContent } from "@mui/material";
 import SliderTextField from "@/components/SliderTextField";
+import { useState } from "react";
 
 function InputCard() {
+  const [speed, setSpeed] = useState<number | null>(6);
+  const [first, setFirst] = useState<number | null>(3);
+  const [last, setLast] = useState<number | null>(3);
+  const [shape, setShape] = useState<number | null>(0.5);
+
   return (
     <Card>
       <CardContent>
         <SliderTextField
           label="N Speed"
-          initialValue={6}
+          value={speed}
+          setValue={setSpeed}
           min={3}
           max={10}
           step={1}
@@ -15,21 +22,24 @@ function InputCard() {
         />
         <SliderTextField
           label="First Gearing"
-          initialValue={3}
+          value={first}
+          setValue={setFirst}
           min={0.48}
           max={6}
           step={0.01}
         />
         <SliderTextField
           label="Last Gearing"
-          initialValue={3}
+          value={last}
+          setValue={setLast}
           min={0.48}
           max={6}
           step={0.01}
         />
         <SliderTextField
           label="Gearing Shape"
-          initialValue={0.5}
+          value={shape}
+          setValue={setShape}
           min={0}
           max={1}
           step={0.1}

@@ -3,7 +3,8 @@ import { useState } from "react";
 
 interface SliderInputProps {
   label: string;
-  initialValue: number;
+  value: number | null;
+  setValue: (newValue: number | null) => void;
   min: number;
   max: number;
   step: number;
@@ -20,14 +21,13 @@ function round(value: number) {
 
 function SliderTextField({
   label,
-  initialValue,
+  value,
+  setValue,
   min,
   max,
   step,
   marks,
 }: SliderInputProps) {
-  const [value, setValue] = useState<number | null>(initialValue);
-
   function onSliderChange(event: Event, newValue: number | number[]) {
     setValue(newValue as number);
   }
