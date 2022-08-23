@@ -1,12 +1,13 @@
+import { Button } from "@mui/material";
 import type { NextPage } from "next";
-import { useResponsive } from "@/libs/responsive";
 
 const Home: NextPage = () => {
-  const mobile = <>Mobile</>;
-  const tablet = <>Tablet</>;
-  const desktop = <>Desktop</>;
-
-  return useResponsive({ mobile, tablet, desktop });
+  return (
+    <>
+      <h1>Lorem Ipsum</h1>
+      <Button variant="contained">OK</Button>
+    </>
+  );
 };
 
 export default Home;
