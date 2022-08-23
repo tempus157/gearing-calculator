@@ -1,5 +1,5 @@
-import { Grid, Input, Slider, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import { clamp, round } from "@/libs/math";
+import { Grid, Slider, TextField, Typography } from "@mui/material";
 
 interface SliderInputProps {
   label: string;
@@ -11,14 +11,6 @@ interface SliderInputProps {
   marks?: boolean;
 }
 
-function clamp(value: number, min: number, max: number) {
-  return Math.min(Math.max(value, min), max);
-}
-
-function round(value: number) {
-  return Math.round(value * 100) / 100;
-}
-
 function SliderTextField({
   label,
   value,
@@ -26,7 +18,7 @@ function SliderTextField({
   min,
   max,
   step,
-  marks,
+  marks = false,
 }: SliderInputProps) {
   function handleSliderChange(event: Event, newValue: number | number[]) {
     setValue(newValue as number);
@@ -38,7 +30,7 @@ function SliderTextField({
       return;
     }
     const newValue = Number(event.target.value);
-    setValue(clamp(round(newValue), min, max));
+    setValue(clamp(round(newValue, 2), min, max));
   }
 
   return (
