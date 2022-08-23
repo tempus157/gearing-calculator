@@ -10,6 +10,7 @@ import { useMemo } from "react";
 
 function App({ Component, pageProps }: AppProps) {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
   const theme = useMemo(
     () =>
       createTheme({
@@ -21,13 +22,15 @@ function App({ Component, pageProps }: AppProps) {
   );
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <Component {...pageProps} />
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
   );
 }
 
