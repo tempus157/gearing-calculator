@@ -6,6 +6,7 @@ import {
   Collapse,
   Grid,
   IconButton,
+  IconButtonProps,
   styled,
   Typography,
 } from "@mui/material";
@@ -16,6 +17,18 @@ const FakeGraph = styled("div")({
   backgroundColor: "#9cc8f5",
   height: 220,
 });
+
+interface ExpandMoreProps extends IconButtonProps {
+  expand: boolean;
+}
+
+const ExpandMoreButton = styled(({ expand, ...other }: ExpandMoreProps) => (
+  <IconButton {...other} />
+))(({ theme, expand }) => ({
+  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+  marginLeft: "auto",
+  transition: theme.transitions.create("transform"),
+}));
 
 const ordinalSuffix = [
   "ST",
@@ -32,7 +45,6 @@ const ordinalSuffix = [
 
 function OutputCard() {
   const [expanded, setExpanded] = useState(false);
-
   function handleExpandClick() {
     setExpanded(!expanded);
   }
@@ -41,9 +53,9 @@ function OutputCard() {
     <Card>
       <FakeGraph />
       <Box m={1}>
-        <IconButton onClick={handleExpandClick}>
+        <ExpandMoreButton expand={expanded} onClick={handleExpandClick}>
           <ExpandMore />
-        </IconButton>
+        </ExpandMoreButton>
       </Box>
       <Collapse in={expanded}>
         <CardContent>
