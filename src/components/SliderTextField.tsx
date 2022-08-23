@@ -28,11 +28,11 @@ function SliderTextField({
   step,
   marks,
 }: SliderInputProps) {
-  function onSliderChange(event: Event, newValue: number | number[]) {
+  function handleSliderChange(event: Event, newValue: number | number[]) {
     setValue(newValue as number);
   }
 
-  function onInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     if (event.target.value === "") {
       setValue(null);
       return;
@@ -48,7 +48,7 @@ function SliderTextField({
         <Grid item xs>
           <Slider
             value={value ?? min}
-            onChange={onSliderChange}
+            onChange={handleSliderChange}
             min={min}
             max={max}
             step={step}
@@ -58,7 +58,7 @@ function SliderTextField({
         <Grid item width={100}>
           <TextField
             value={value}
-            onChange={onInputChange}
+            onChange={handleInputChange}
             type="number"
             size="small"
             error={value === null}

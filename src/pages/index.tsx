@@ -1,8 +1,9 @@
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
+import { Stack } from "@mui/material";
 import TitleBar from "@/components/TitleBar";
 import InputCard from "@/components/InputCard";
-import { Stack } from "@mui/material";
+import OutputCard from "@/components/OutputCard";
 
 const Home: NextPage = () => {
   return (
@@ -13,7 +14,7 @@ const Home: NextPage = () => {
       />
       <TitleBar text="Gearing Calculator" />
       <Stack spacing={2} m={2}>
-        <InputCard />
+        <OutputCard />
         <InputCard />
       </Stack>
     </>
