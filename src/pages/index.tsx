@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useResponsive } from "../libs/responsive";
+import { useResponsive } from "@/libs/responsive";
 
 const Home: NextPage = () => {
   const mobile = <>Mobile</>;
