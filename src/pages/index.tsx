@@ -1,7 +1,7 @@
-import TitleBar from "@/components/TitleBar";
-import { Button } from "@mui/material";
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
+import TitleBar from "@/components/TitleBar";
+import InputCard from "@/components/InputCard";
 
 const Home: NextPage = () => {
   return (
@@ -11,30 +11,9 @@ const Home: NextPage = () => {
         description="A simple gearing calculator for Forza Horizon"
       />
       <TitleBar text="Gearing Calculator" />
-      <h1>Lorem Ipsum</h1>
-      <Button variant="contained">OK</Button>
-      <h1>Lorem Ipsum</h1>
-      <Button variant="contained">OK</Button>
-      <h1>Lorem Ipsum</h1>
-      <Button variant="contained">OK</Button>
-      <h1>Lorem Ipsum</h1>
-      <Button variant="contained">OK</Button>
-      <h1>Lorem Ipsum</h1>
-      <Button variant="contained">OK</Button>
-      <h1>Lorem Ipsum</h1>
-      <Button variant="contained">OK</Button>
-      <h1>Lorem Ipsum</h1>
-      <Button variant="contained">OK</Button>
-      <h1>Lorem Ipsum</h1>
-      <Button variant="contained">OK</Button>
-      <h1>Lorem Ipsum</h1>
-      <Button variant="contained">OK</Button>
-      <h1>Lorem Ipsum</h1>
-      <Button variant="contained">OK</Button>
-      <h1>Lorem Ipsum</h1>
-      <Button variant="contained">OK</Button>
-      <h1>Lorem Ipsum</h1>
-      <Button variant="contained">OK</Button>
+      <InputCard />
+      <InputCard />
+      <InputCard />
     </>
   );
 };
