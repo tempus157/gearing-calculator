@@ -1,4 +1,4 @@
-import { AppBar, styled, Toolbar } from "@mui/material";
+import { AppBar, styled, Toolbar, Typography } from "@mui/material";
 
 interface TitleBarProps {
   text: string;
@@ -10,7 +10,9 @@ function TitleBar({ text }: TitleBarProps) {
   return (
     <>
       <AppBar>
-        <Toolbar>{text}</Toolbar>
+        <Toolbar>
+          <Typography variant="h6">{text}</Typography>
+        </Toolbar>
       </AppBar>
       <Offset />
     </>

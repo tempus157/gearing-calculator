@@ -12,7 +12,7 @@ const Home: NextPage = () => {
         title="Gearing Calculator"
         description="A simple gearing calculator for Forza Horizon"
       />
-      <TitleBar text="Gearing Calculator" />
+      <TitleBar text="Tempus' Gearing Calculator" />
       <Stack spacing={2} m={2}>
         <OutputCard />
         <InputCard />
