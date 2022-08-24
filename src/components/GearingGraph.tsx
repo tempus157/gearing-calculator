@@ -1,6 +1,6 @@
 import { inverseLerp, lerp } from "@/libs/math";
 import { Box, useTheme } from "@mui/material";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import Two from "two.js";
 
 interface GearingGraphProps {
@@ -13,19 +13,7 @@ function GearingGraph({ gears, height }: GearingGraphProps) {
   const two = useRef<Two>();
   const theme = useTheme();
 
-  useEffect(() => {
-    two.current = new Two({ autostart: true }).appendTo(ref.current!);
-    two.current.width = ref.current!.clientWidth;
-    two.current.height = height;
-    drawGraph();
-  }, []);
-
-  useEffect(() => {
-    two.current!.clear();
-    drawGraph();
-  }, [gears]);
-
-  function drawGraph() {
+  const drawGraph = useCallback(() => {
     const lastGear = gears[gears.length - 1];
     let lastX2 = 0;
 
@@ -39,7 +27,26 @@ function GearingGraph({ gears, height }: GearingGraphProps) {
       line.linewidth = 2;
       lastX2 = x2;
     });
-  }
+  }, [gears]);
+
+  const handleResize = () => {
+    two.current!.clear();
+    two.current!.width = ref.current!.clientWidth;
+    two.current!.height = height;
+    drawGraph();
+  };
+
+  useEffect(() => {
+    two.current = new Two({ autostart: true }).appendTo(ref.current!);
+    handleResize();
+  }, []);
+
+  useEffect(() => {
+    two.current!.clear();
+    drawGraph();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [gears]);
 
   return <Box ref={ref} height={height} overflow="hidden"></Box>;
 }
