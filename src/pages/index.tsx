@@ -9,10 +9,10 @@ const Home: NextPage = () => {
   return (
     <>
       <NextSeo
-        title="Gearing Calculator"
+        title="Gearing Calculator - Tempus.js"
         description="A simple gearing calculator for Forza Horizon"
       />
-      <TitleBar text="Tempus' Gearing Calculator" />
+      <TitleBar text="Gearing Calculator for Forza Horzion" />
       <Stack spacing={2} m={2}>
         <OutputCard />
         <InputCard />
