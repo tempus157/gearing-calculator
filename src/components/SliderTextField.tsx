@@ -8,9 +8,9 @@ interface SliderInputProps {
   setValue: (newValue: number) => void;
   min: number;
   max: number;
-  step: number;
-  digit?: number;
+  digit: number;
   marks?: boolean;
+  disabled?: boolean;
 }
 
 function SliderTextField({
@@ -19,11 +19,12 @@ function SliderTextField({
   setValue,
   min,
   max,
-  step,
-  digit = 0,
+  digit,
   marks = false,
+  disabled = false,
 }: SliderInputProps) {
   const [text, setText] = useState(value.toFixed(digit));
+  const step = 1 / 10 ** digit;
 
   function handleSliderChange(event: Event, newValue: number | number[]) {
     if (typeof newValue !== "number") {
@@ -56,6 +57,7 @@ function SliderTextField({
             max={max}
             step={step}
             marks={marks}
+            disabled={disabled}
           />
         </Grid>
         <Grid item width={100}>
@@ -65,6 +67,7 @@ function SliderTextField({
             onBlur={handleTextFieldBlur}
             type="number"
             size="small"
+            disabled={disabled}
             inputProps={{ step }}
           />
         </Grid>

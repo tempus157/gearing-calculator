@@ -32,8 +32,8 @@ function GearingEditor({ gears, setGears }: GearingEditorProps) {
           }}
           min={0.48}
           max={6}
-          step={0.01}
           digit={2}
+          disabled
         />
       ))}
     </>

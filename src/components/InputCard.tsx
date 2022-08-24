@@ -17,7 +17,7 @@ function InputCard() {
           setValue={setSpeed}
           min={3}
           max={10}
-          step={1}
+          digit={0}
           marks
         />
         <SliderTextField
@@ -26,7 +26,6 @@ function InputCard() {
           setValue={setFirst}
           min={0.48}
           max={6}
-          step={0.01}
           digit={2}
         />
         <SliderTextField
@@ -35,7 +34,6 @@ function InputCard() {
           setValue={setLast}
           min={0.48}
           max={6}
-          step={0.01}
           digit={2}
         />
         <SliderTextField
@@ -44,7 +42,7 @@ function InputCard() {
           setValue={setShape}
           min={-5}
           max={5}
-          step={1}
+          digit={0}
           marks
         />
       </CardContent>

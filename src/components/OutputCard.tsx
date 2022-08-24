@@ -1,4 +1,3 @@
-import { ExpandMore } from "@mui/icons-material";
 import {
   Button,
   Card,
@@ -9,8 +8,10 @@ import {
   IconButtonProps,
   styled,
 } from "@mui/material";
+import { ExpandMore } from "@mui/icons-material";
 import { useState } from "react";
-import GearingEditor from "./GearingEditor";
+import { calculateGearing } from "@/libs/gearingCalculator";
+import GearingEditor from "@/components/GearingEditor";
 
 const FakeGraph = styled("div")({
   backgroundColor: "#9cc8f5",
@@ -30,9 +31,7 @@ const ExpandMoreButton = styled(({ expand, ...other }: ExpandMoreProps) => (
 
 function OutputCard() {
   const [expanded, setExpanded] = useState(false);
-  const [gears, setGears] = useState([
-    3, 2, 1.5, 1.2, 1, 0.9, 0.82, 0.76, 0.72, 0.68,
-  ]);
+  const [gears, setGears] = useState(calculateGearing());
 
   function handleExpandClick() {
     setExpanded(!expanded);
