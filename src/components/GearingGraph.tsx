@@ -4,6 +4,7 @@ import Two from "two.js";
 
 interface GearingGraphProps {
   gears: number[];
+  height: number;
 }
 
 function handleResize() {
@@ -11,12 +12,12 @@ function handleResize() {
 }
 
 function drawGraph(two: Two) {
-  const line = two.makeLine(0, 0, 100, 100);
+  const line = two.makeLine(0, 220, 100, 0);
   line.stroke = "#ffffff";
   line.linewidth = 5;
 }
 
-function GearingGraph({ gears }: GearingGraphProps) {
+function GearingGraph({ gears, height }: GearingGraphProps) {
   const two = useRef<Two>();
   const ref = useRef<HTMLElement>(null);
 
@@ -27,7 +28,7 @@ function GearingGraph({ gears }: GearingGraphProps) {
     return () => two.current?.unbind("resize");
   }, []);
 
-  return <Box ref={ref} height={220} overflow="hidden"></Box>;
+  return <Box ref={ref} height={height} overflow="hidden"></Box>;
 }
 
 export default GearingGraph;

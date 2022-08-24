@@ -1,8 +1,10 @@
 import {
+  Box,
   Button,
   Card,
   CardContent,
   Collapse,
+  Divider,
   Grid,
   IconButton,
   IconButtonProps,
@@ -35,7 +37,10 @@ function OutputCard() {
 
   return (
     <Card>
-      <GearingGraph gears={gears} />
+      <CardContent>
+        <GearingGraph gears={gears} height={220} />
+      </CardContent>
+      <Divider />
       <Grid container justifyContent="space-between" alignItems="center">
         <Grid item m={1}>
           <ExpandMoreButton expand={expanded} onClick={handleExpandClick}>
@@ -48,7 +53,9 @@ function OutputCard() {
       </Grid>
       <Collapse in={expanded}>
         <CardContent>
-          <GearingEditor gears={gears} setGears={setGears} />
+          <Box mt={-1}>
+            <GearingEditor gears={gears} setGears={setGears} />
+          </Box>
         </CardContent>
       </Collapse>
     </Card>
