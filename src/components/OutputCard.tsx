@@ -1,9 +1,10 @@
 import { ExpandMore } from "@mui/icons-material";
 import {
-  Box,
+  Button,
   Card,
   CardContent,
   Collapse,
+  Grid,
   IconButton,
   IconButtonProps,
   styled,
@@ -40,11 +41,16 @@ function OutputCard() {
   return (
     <Card>
       <FakeGraph />
-      <Box m={1} display="grid" justifyContent="center">
-        <ExpandMoreButton expand={expanded} onClick={handleExpandClick}>
-          <ExpandMore />
-        </ExpandMoreButton>
-      </Box>
+      <Grid container justifyContent="space-between" alignItems="center">
+        <Grid item m={1}>
+          <ExpandMoreButton expand={expanded} onClick={handleExpandClick}>
+            <ExpandMore />
+          </ExpandMoreButton>
+        </Grid>
+        <Grid item m={1}>
+          <Button>Calculate</Button>
+        </Grid>
+      </Grid>
       <Collapse in={expanded}>
         <CardContent>
           <GearingEditor gears={gears} setGears={setGears} />

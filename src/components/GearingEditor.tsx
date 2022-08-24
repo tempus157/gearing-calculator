@@ -21,23 +21,21 @@ const ordinalSuffix = [
 function GearingEditor({ gears, setGears }: GearingEditorProps) {
   return (
     <>
-      {gears.map((gear, i) => {
-        return (
-          <SliderTextField
-            key={i}
-            label={`${i + 1}${ordinalSuffix[i]}`}
-            value={gear}
-            setValue={(newValue) => {
-              gears[i] = newValue;
-              setGears([...gears]);
-            }}
-            min={0.48}
-            max={6}
-            step={0.01}
-            digit={2}
-          />
-        );
-      })}
+      {gears.map((gear, i) => (
+        <SliderTextField
+          key={i}
+          label={`${i + 1}${ordinalSuffix[i]}`}
+          value={gear}
+          setValue={(newValue) => {
+            gears[i] = newValue;
+            setGears([...gears]);
+          }}
+          min={0.48}
+          max={6}
+          step={0.01}
+          digit={2}
+        />
+      ))}
     </>
   );
 }
