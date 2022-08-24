@@ -10,3 +10,7 @@ export function round(x: number, digit: number) {
 export function lerp(x: number, y: number, t: number) {
   return x * (1 - t) + y * t;
 }
+
+export function inverseLerp(x: number, y: number, value: number) {
+  return clamp((value - x) / (y - x), 0, 1);
+}
