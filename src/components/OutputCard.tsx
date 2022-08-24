@@ -31,9 +31,9 @@ function OutputCard() {
   const [expanded, setExpanded] = useState(false);
   const [gears, setGears] = useState(calculateGearing());
 
-  function handleExpandClick() {
+  const handleExpandClick = () => {
     setExpanded(!expanded);
-  }
+  };
 
   return (
     <Card>

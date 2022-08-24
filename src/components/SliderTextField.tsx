@@ -28,7 +28,7 @@ function SliderTextField({
   const [text, setText] = useState(value.toFixed(digit));
   const step = 1 / 10 ** digit;
 
-  function handleSliderChange(event: Event, newValue: number | number[]) {
+  const handleSliderChange = (event: Event, newValue: number | number[]) => {
     if (typeof newValue !== "number") {
       return;
     }
@@ -36,18 +36,20 @@ function SliderTextField({
     newValue = clamp(newValue, limitMin, limitMax);
     setValue(newValue);
     setText(newValue.toFixed(digit));
-  }
+  };
 
-  function handleTextFieldChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const handleTextFieldChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setValue(event.target.value === "" ? limitMin : Number(event.target.value));
     setText(event.target.value);
-  }
+  };
 
-  function handleTextFieldBlur() {
+  const handleTextFieldBlur = () => {
     const newValue = clamp(round(value, digit), limitMin, limitMax);
     setValue(newValue);
     setText(newValue.toFixed(digit));
-  }
+  };
 
   return (
     <>
