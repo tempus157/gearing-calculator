@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import TitleBar from "@/components/TitleBar";
 import InputCard from "@/components/InputCard";
 import OutputCard from "@/components/OutputCard";
@@ -13,9 +13,13 @@ const Home: NextPage = () => {
         description="A simple gearing calculator for Forza Horizon"
       />
       <TitleBar text="Gearing Calculator for Forza Horzion" />
-      <Stack spacing={2} m={2}>
-        <OutputCard />
-        <InputCard />
+      <Stack m="auto" maxWidth={900}>
+        <Box m={2}>
+          <OutputCard />
+        </Box>
+        <Box ml={2} mr={2} mb={2}>
+          <InputCard />
+        </Box>
       </Stack>
     </>
   );
