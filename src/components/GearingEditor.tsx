@@ -32,8 +32,9 @@ function GearingEditor({ gears, setGears }: GearingEditorProps) {
           }}
           min={0.48}
           max={6}
+          limitMin={i === gears.length - 1 ? 0.48 : gears[i + 1]}
+          limitMax={i === 0 ? 6 : gears[i - 1]}
           digit={2}
-          disabled
         />
       ))}
     </>

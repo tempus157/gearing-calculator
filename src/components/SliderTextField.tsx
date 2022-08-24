@@ -8,9 +8,10 @@ interface SliderInputProps {
   setValue: (newValue: number) => void;
   min: number;
   max: number;
+  limitMin?: number;
+  limitMax?: number;
   digit: number;
   marks?: boolean;
-  disabled?: boolean;
 }
 
 function SliderTextField({
@@ -19,9 +20,10 @@ function SliderTextField({
   setValue,
   min,
   max,
+  limitMin = min,
+  limitMax = max,
   digit,
   marks = false,
-  disabled = false,
 }: SliderInputProps) {
   const [text, setText] = useState(value.toFixed(digit));
   const step = 1 / 10 ** digit;
@@ -30,17 +32,19 @@ function SliderTextField({
     if (typeof newValue !== "number") {
       return;
     }
+
+    newValue = clamp(newValue, limitMin, limitMax);
     setValue(newValue);
     setText(newValue.toFixed(digit));
   }
 
   function handleTextFieldChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setValue(event.target.value === "" ? min : Number(event.target.value));
+    setValue(event.target.value === "" ? limitMin : Number(event.target.value));
     setText(event.target.value);
   }
 
   function handleTextFieldBlur() {
-    const newValue = clamp(round(value, digit), min, max);
+    const newValue = clamp(round(value, digit), limitMin, limitMax);
     setValue(newValue);
     setText(newValue.toFixed(digit));
   }
@@ -57,7 +61,6 @@ function SliderTextField({
             max={max}
             step={step}
             marks={marks}
-            disabled={disabled}
           />
         </Grid>
         <Grid item width={100}>
@@ -67,7 +70,6 @@ function SliderTextField({
             onBlur={handleTextFieldBlur}
             type="number"
             size="small"
-            disabled={disabled}
             inputProps={{ step }}
           />
         </Grid>
