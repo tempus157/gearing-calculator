@@ -65,7 +65,6 @@ function SliderTextField({
             onBlur={handleTextFieldBlur}
             type="number"
             size="small"
-            error={value === null}
             inputProps={{ step }}
           />
         </Grid>
