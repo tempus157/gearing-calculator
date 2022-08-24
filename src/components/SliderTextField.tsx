@@ -1,10 +1,11 @@
 import { clamp, round } from "@/libs/math";
 import { Grid, Slider, TextField, Typography } from "@mui/material";
+import { useState } from "react";
 
 interface SliderInputProps {
   label: string;
-  value: number | null;
-  setValue: (newValue: number | null) => void;
+  value: number;
+  setValue: (newValue: number) => void;
   min: number;
   max: number;
   step: number;
@@ -22,19 +23,25 @@ function SliderTextField({
   digit = 0,
   marks = false,
 }: SliderInputProps) {
+  const [text, setText] = useState(value.toFixed(digit));
+
   function handleSliderChange(event: Event, newValue: number | number[]) {
-    setValue(newValue as number);
+    if (typeof newValue !== "number") {
+      return;
+    }
+    setValue(newValue);
+    setText(newValue.toFixed(digit));
   }
 
   function handleTextFieldChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setValue(event.target.value === "" ? null : Number(event.target.value));
+    setValue(event.target.value === "" ? min : Number(event.target.value));
+    setText(event.target.value);
   }
 
   function handleTextFieldBlur() {
-    if (value === null) {
-      return;
-    }
-    setValue(clamp(round(value, digit), min, max));
+    const newValue = clamp(round(value, digit), min, max);
+    setValue(newValue);
+    setText(newValue.toFixed(digit));
   }
 
   return (
@@ -53,7 +60,7 @@ function SliderTextField({
         </Grid>
         <Grid item width={100}>
           <TextField
-            value={value}
+            value={text}
             onChange={handleTextFieldChange}
             onBlur={handleTextFieldBlur}
             type="number"

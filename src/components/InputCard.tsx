@@ -3,10 +3,10 @@ import SliderTextField from "@/components/SliderTextField";
 import { useState } from "react";
 
 function InputCard() {
-  const [speed, setSpeed] = useState<number | null>(6);
-  const [first, setFirst] = useState<number | null>(3);
-  const [last, setLast] = useState<number | null>(1);
-  const [shape, setShape] = useState<number | null>(0);
+  const [speed, setSpeed] = useState(6);
+  const [first, setFirst] = useState(3);
+  const [last, setLast] = useState(1);
+  const [shape, setShape] = useState(0);
 
   return (
     <Card>
