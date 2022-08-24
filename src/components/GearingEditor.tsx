@@ -1,3 +1,4 @@
+import { GEAR_DIGIT, GEAR_MAX, GEAR_MIN } from "@/libs/constant";
 import SliderTextField from "./SliderTextField";
 
 interface GearingEditorProps {
@@ -30,11 +31,11 @@ function GearingEditor({ gears, setGears }: GearingEditorProps) {
             gears[i] = newValue;
             setGears([...gears]);
           }}
-          min={0.48}
-          max={6}
-          limitMin={i === gears.length - 1 ? 0.48 : gears[i + 1]}
-          limitMax={i === 0 ? 6 : gears[i - 1]}
-          digit={2}
+          min={GEAR_MIN}
+          max={GEAR_MAX}
+          limitMin={i === gears.length - 1 ? GEAR_MIN : gears[i + 1]}
+          limitMax={i === 0 ? GEAR_MAX : gears[i - 1]}
+          digit={GEAR_DIGIT}
         />
       ))}
     </>

@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { useEffect, useRef } from "react";
 import Two from "two.js";
 
@@ -7,26 +7,24 @@ interface GearingGraphProps {
   height: number;
 }
 
-function handleResize() {
-  console.log("resize");
-}
-
-function drawGraph(two: Two) {
-  const line = two.makeLine(0, 220, 100, 0);
-  line.stroke = "#ffffff";
-  line.linewidth = 5;
-}
-
 function GearingGraph({ gears, height }: GearingGraphProps) {
-  const two = useRef<Two>();
   const ref = useRef<HTMLElement>(null);
+  const theme = useTheme();
 
   useEffect(() => {
-    two.current = new Two({ autostart: true }).appendTo(ref.current!);
-    two.current.bind("resize", handleResize);
-    drawGraph(two.current);
-    return () => two.current?.unbind("resize");
+    const two = new Two({ autostart: true }).appendTo(ref.current!);
+    drawGraph(two, ref.current!.clientWidth, height);
   }, []);
+
+  function drawGraph(two: Two, width: number, height: number) {
+    const lastGear = gears[gears.length - 1];
+    gears.reverse().forEach((gear, i) => {
+      const ratio = lastGear / gear;
+      const line = two.makeLine(0, height, width * ratio, 0);
+      line.stroke = theme.palette.primary.main;
+      line.linewidth = 2;
+    });
+  }
 
   return <Box ref={ref} height={height} overflow="hidden"></Box>;
 }
