@@ -27,6 +27,7 @@ function InputCard() {
           min={0.48}
           max={6}
           step={0.01}
+          digit={2}
         />
         <SliderTextField
           label="Last Gearing"
@@ -35,6 +36,7 @@ function InputCard() {
           min={0.48}
           max={6}
           step={0.01}
+          digit={2}
         />
         <SliderTextField
           label="Gearing Shape"

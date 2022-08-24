@@ -8,6 +8,7 @@ interface SliderInputProps {
   min: number;
   max: number;
   step: number;
+  digit?: number;
   marks?: boolean;
 }
 
@@ -18,19 +19,22 @@ function SliderTextField({
   min,
   max,
   step,
+  digit = 0,
   marks = false,
 }: SliderInputProps) {
   function handleSliderChange(event: Event, newValue: number | number[]) {
     setValue(newValue as number);
   }
 
-  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    if (event.target.value === "") {
-      setValue(null);
+  function handleTextFieldChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setValue(event.target.value === "" ? null : Number(event.target.value));
+  }
+
+  function handleTextFieldBlur() {
+    if (value === null) {
       return;
     }
-    const newValue = Number(event.target.value);
-    setValue(clamp(round(newValue, 2), min, max));
+    setValue(clamp(round(value, digit), min, max));
   }
 
   return (
@@ -50,10 +54,12 @@ function SliderTextField({
         <Grid item width={100}>
           <TextField
             value={value}
-            onChange={handleInputChange}
+            onChange={handleTextFieldChange}
+            onBlur={handleTextFieldBlur}
             type="number"
             size="small"
             error={value === null}
+            inputProps={{ step }}
           />
         </Grid>
       </Grid>
