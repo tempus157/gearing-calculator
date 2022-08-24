@@ -27,7 +27,7 @@ function GearingGraph({ gears, height }: GearingGraphProps) {
       line.linewidth = 2;
       lastX2 = x2;
     });
-  }, [gears]);
+  }, [gears, theme.palette.primary.main]);
 
   const handleResize = () => {
     two.current!.clear();
@@ -38,7 +38,8 @@ function GearingGraph({ gears, height }: GearingGraphProps) {
 
   useEffect(() => {
     two.current = new Two({ autostart: true }).appendTo(ref.current!);
-    handleResize();
+    two.current!.width = ref.current!.clientWidth;
+    two.current!.height = height;
   }, []);
 
   useEffect(() => {
@@ -46,7 +47,7 @@ function GearingGraph({ gears, height }: GearingGraphProps) {
     drawGraph();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [gears]);
+  }, [gears, theme.palette.primary.main]);
 
   return <Box ref={ref} height={height} overflow="hidden"></Box>;
 }
