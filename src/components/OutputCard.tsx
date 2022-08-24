@@ -4,15 +4,13 @@ import {
   Card,
   CardContent,
   Collapse,
-  Grid,
   IconButton,
   IconButtonProps,
   styled,
-  Typography,
 } from "@mui/material";
 import { useState } from "react";
+import GearingEditor from "./GearingEditor";
 
-const fakeResult = [3, 2, 1.5, 1.2, 1, 0.9, 0.82, 0.76, 0.72, 0.68] as const;
 const FakeGraph = styled("div")({
   backgroundColor: "#9cc8f5",
   height: 220,
@@ -29,21 +27,12 @@ const ExpandMoreButton = styled(({ expand, ...other }: ExpandMoreProps) => (
   transition: theme.transitions.create("transform"),
 }));
 
-const ordinalSuffix = [
-  "ST",
-  "ND",
-  "RD",
-  "TH",
-  "TH",
-  "TH",
-  "TH",
-  "TH",
-  "TH",
-  "TH",
-] as const;
-
 function OutputCard() {
   const [expanded, setExpanded] = useState(false);
+  const [gears, setGears] = useState([
+    3, 2, 1.5, 1.2, 1, 0.9, 0.82, 0.76, 0.72, 0.68,
+  ]);
+
   function handleExpandClick() {
     setExpanded(!expanded);
   }
@@ -58,19 +47,7 @@ function OutputCard() {
       </Box>
       <Collapse in={expanded}>
         <CardContent>
-          <Grid container columns={9}>
-            {fakeResult.map((res, i) => (
-              <>
-                <Grid item xs={1}>
-                  {i + 1}
-                  {ordinalSuffix[i]}
-                </Grid>
-                <Grid item xs={2}>
-                  <Typography>{res.toFixed(2)}</Typography>
-                </Grid>
-              </>
-            ))}
-          </Grid>
+          <GearingEditor gears={gears} setGears={setGears} />
         </CardContent>
       </Collapse>
     </Card>
