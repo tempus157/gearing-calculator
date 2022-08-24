@@ -10,25 +10,31 @@ interface GearingGraphProps {
 
 function GearingGraph({ gears, height }: GearingGraphProps) {
   const ref = useRef<HTMLElement>(null);
+  const two = useRef<Two>();
   const theme = useTheme();
 
   useEffect(() => {
-    const two = new Two({ autostart: true }).appendTo(ref.current!);
-    two.width = ref.current!.clientWidth;
-    two.height = height;
-    drawGraph(two);
+    two.current = new Two({ autostart: true }).appendTo(ref.current!);
+    two.current.width = ref.current!.clientWidth;
+    two.current.height = height;
+    drawGraph();
   }, []);
 
-  function drawGraph(two: Two) {
+  useEffect(() => {
+    two.current!.clear();
+    drawGraph();
+  }, [gears]);
+
+  function drawGraph() {
     const lastGear = gears[gears.length - 1];
     let lastX2 = 0;
 
     gears.forEach((gear) => {
-      const x2 = two.width * (lastGear / gear);
+      const x2 = two.current!.width * (lastGear / gear);
       const t = inverseLerp(0, x2, lastX2);
-      const y1 = lerp(two.height, 0, t);
+      const y1 = lerp(two.current!.height, 0, t);
 
-      const line = two.makeLine(lastX2, y1, x2, 0);
+      const line = two.current!.makeLine(lastX2, y1, x2, 0);
       line.stroke = theme.palette.primary.main;
       line.linewidth = 2;
       lastX2 = x2;
