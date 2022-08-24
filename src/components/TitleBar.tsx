@@ -9,9 +9,11 @@ function TitleBar({ text }: TitleBarProps) {
 
   return (
     <>
-      <AppBar>
+      <AppBar style={{ alignItems: "center" }}>
         <Toolbar>
-          <Typography variant="h6">{text}</Typography>
+          <Typography variant="h6" align="center">
+            {text}
+          </Typography>
         </Toolbar>
       </AppBar>
       <Offset />
