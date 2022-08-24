@@ -12,11 +12,7 @@ import { ExpandMore } from "@mui/icons-material";
 import { useState } from "react";
 import { calculateGearing } from "@/libs/gearingCalculator";
 import GearingEditor from "@/components/GearingEditor";
-
-const FakeGraph = styled("div")({
-  backgroundColor: "#9cc8f5",
-  height: 220,
-});
+import GearingGraph from "./GearingGraph";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -39,7 +35,7 @@ function OutputCard() {
 
   return (
     <Card>
-      <FakeGraph />
+      <GearingGraph gears={gears} />
       <Grid container justifyContent="space-between" alignItems="center">
         <Grid item m={1}>
           <ExpandMoreButton expand={expanded} onClick={handleExpandClick}>
