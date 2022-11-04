@@ -14,7 +14,7 @@ interface SliderInputProps {
 	marks?: boolean;
 }
 
-function SliderTextField({
+const SliderTextField = ({
 	label,
 	value,
 	setValue,
@@ -24,7 +24,7 @@ function SliderTextField({
 	limitMax = max,
 	digit,
 	marks = false,
-}: SliderInputProps) {
+}: SliderInputProps) => {
 	const [text, setText] = useState(value.toFixed(digit));
 	const step = 1 / 10 ** digit;
 
@@ -80,6 +80,6 @@ function SliderTextField({
 			</Grid>
 		</>
 	);
-}
+};
 
 export default SliderTextField;

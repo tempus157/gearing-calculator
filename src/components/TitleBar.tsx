@@ -4,7 +4,7 @@ interface TitleBarProps {
 	text: string;
 }
 
-function TitleBar({ text }: TitleBarProps) {
+const TitleBar = ({ text }: TitleBarProps) => {
 	const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
 	return (
@@ -19,6 +19,6 @@ function TitleBar({ text }: TitleBarProps) {
 			<Offset />
 		</>
 	);
-}
+};
 
 export default TitleBar;

@@ -19,7 +19,7 @@ const ordinalSuffix = [
 	"TH",
 ] as const;
 
-function GearingEditor({ gears, setGears }: GearingEditorProps) {
+const GearingEditor = ({ gears, setGears }: GearingEditorProps) => {
 	return (
 		<>
 			{gears.map((gear, i) => (
@@ -40,6 +40,6 @@ function GearingEditor({ gears, setGears }: GearingEditorProps) {
 			))}
 		</>
 	);
-}
+};
 
 export default GearingEditor;

@@ -8,7 +8,7 @@ interface GearingGraphProps {
 	height: number;
 }
 
-function GearingGraph({ gears, height }: GearingGraphProps) {
+const GearingGraph = ({ gears, height }: GearingGraphProps) => {
 	const ref = useRef<HTMLElement>(null);
 	const two = useRef<Two>();
 	const theme = useTheme();
@@ -50,6 +50,6 @@ function GearingGraph({ gears, height }: GearingGraphProps) {
 	}, [gears, theme.palette.primary.main]);
 
 	return <Box ref={ref} height={height} overflow="hidden"></Box>;
-}
+};
 
 export default GearingGraph;

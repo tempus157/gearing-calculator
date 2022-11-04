@@ -3,7 +3,7 @@ import SliderTextField from "@/components/SliderTextField";
 import { useState } from "react";
 import { GEAR_DIGIT, GEAR_MAX, GEAR_MIN } from "@/libs/constant";
 
-function InputCard() {
+const InputCard = () => {
 	const [speed, setSpeed] = useState(6);
 	const [first, setFirst] = useState(3);
 	const [last, setLast] = useState(1);
@@ -49,6 +49,6 @@ function InputCard() {
 			</CardContent>
 		</Card>
 	);
-}
+};
 
 export default InputCard;

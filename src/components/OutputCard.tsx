@@ -27,7 +27,7 @@ const ExpandMoreButton = styled(({ expand, ...other }: ExpandMoreProps) => (
 	transition: theme.transitions.create("transform"),
 }));
 
-function OutputCard() {
+const OutputCard = () => {
 	const [expanded, setExpanded] = useState(false);
 	const [gears, setGears] = useState(calculateGearing());
 
@@ -63,6 +63,6 @@ function OutputCard() {
 			</Collapse>
 		</Card>
 	);
-}
+};
 
 export default OutputCard;
