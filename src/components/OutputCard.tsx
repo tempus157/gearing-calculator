@@ -11,7 +11,7 @@ import {
 	styled,
 } from "@mui/material";
 import { ExpandMore } from "@mui/icons-material";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { calculateGearing } from "@/libs/gearingCalculator";
 import GearingEditor from "@/components/GearingEditor";
 import GearingGraph from "./GearingGraph";
@@ -27,12 +27,29 @@ const ExpandMoreButton = styled(({ expand, ...other }: ExpandMoreProps) => (
 	transition: theme.transitions.create("transform"),
 }));
 
-const OutputCard = () => {
+interface OutputCardProps {
+	gears: number[];
+	setGears: Dispatch<SetStateAction<number[]>>;
+	speed: number;
+	shape: number;
+	first: number;
+}
+
+const OutputCard = ({
+	gears,
+	setGears,
+	speed,
+	shape,
+	first,
+}: OutputCardProps) => {
 	const [expanded, setExpanded] = useState(false);
-	const [gears, setGears] = useState(calculateGearing());
 
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
+	};
+
+	const handleCalculateClick = () => {
+		setGears(calculateGearing(speed, shape, first));
 	};
 
 	return (
@@ -51,7 +68,7 @@ const OutputCard = () => {
 					</ExpandMoreButton>
 				</Grid>
 				<Grid item m={1}>
-					<Button>Calculate</Button>
+					<Button onClick={handleCalculateClick}>Calculate</Button>
 				</Grid>
 			</Grid>
 			<Collapse in={expanded}>

@@ -1,14 +1,25 @@
 import { Card, CardContent } from "@mui/material";
-import SliderTextField from "@/components/SliderTextField";
-import { useState } from "react";
 import { GEAR_DIGIT, GEAR_MAX, GEAR_MIN } from "@/libs/constant";
+import SliderTextField from "@/components/SliderTextField";
+import { Dispatch, SetStateAction } from "react";
 
-const InputCard = () => {
-	const [speed, setSpeed] = useState(6);
-	const [first, setFirst] = useState(3);
-	const [last, setLast] = useState(1);
-	const [shape, setShape] = useState(0);
+interface InputCardProps {
+	speed: number;
+	setSpeed: Dispatch<SetStateAction<number>>;
+	shape: number;
+	setShape: Dispatch<SetStateAction<number>>;
+	first: number;
+	setFirst: Dispatch<SetStateAction<number>>;
+}
 
+const InputCard = ({
+	speed,
+	setSpeed,
+	shape,
+	setShape,
+	first,
+	setFirst,
+}: InputCardProps) => {
 	return (
 		<Card>
 			<CardContent>
@@ -22,22 +33,6 @@ const InputCard = () => {
 					marks
 				/>
 				<SliderTextField
-					label="First Gearing"
-					value={first}
-					setValue={setFirst}
-					min={GEAR_MIN}
-					max={GEAR_MAX}
-					digit={GEAR_DIGIT}
-				/>
-				<SliderTextField
-					label="Last Gearing"
-					value={last}
-					setValue={setLast}
-					min={GEAR_MIN}
-					max={GEAR_MAX}
-					digit={GEAR_DIGIT}
-				/>
-				<SliderTextField
 					label="Gearing Shape"
 					value={shape}
 					setValue={setShape}
@@ -45,6 +40,14 @@ const InputCard = () => {
 					max={5}
 					digit={0}
 					marks
+				/>
+				<SliderTextField
+					label="1ST Gear"
+					value={first}
+					setValue={setFirst}
+					min={GEAR_MIN}
+					max={GEAR_MAX}
+					digit={GEAR_DIGIT}
 				/>
 			</CardContent>
 		</Card>

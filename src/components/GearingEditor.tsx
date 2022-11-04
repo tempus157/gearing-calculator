@@ -1,9 +1,10 @@
 import { GEAR_DIGIT, GEAR_MAX, GEAR_MIN } from "@/libs/constant";
+import { Dispatch, SetStateAction } from "react";
 import SliderTextField from "./SliderTextField";
 
 interface GearingEditorProps {
 	gears: number[];
-	setGears: (newValue: number[]) => void;
+	setGears: Dispatch<SetStateAction<number[]>>;
 }
 
 const ordinalSuffix = [
