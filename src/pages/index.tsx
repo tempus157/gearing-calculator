@@ -9,7 +9,7 @@ import { calculateGearing } from "@/libs/gearingCalculator";
 
 const Home: NextPage = () => {
 	const [speed, setSpeed] = useState(6);
-	const [heavy, setHeavy] = useState(2);
+	const [heavy, setHeavy] = useState(1.5);
 	const [shape, setShape] = useState(0);
 	const [first, setFirst] = useState(3);
 	const [gears, setGears] = useState(

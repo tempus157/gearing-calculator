@@ -42,8 +42,7 @@ const InputCard = ({
 					setValue={setHeavy}
 					min={0}
 					max={10}
-					digit={0}
-					marks
+					digit={2}
 				/>
 				<SliderTextField
 					label="Gearing Shape"
