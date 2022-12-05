@@ -3,5 +3,14 @@ export const calculateGearing = (
 	shape: number,
 	first: number
 ) => {
-	return [3, 2.08, 1.62, 1.33, 1.14, 1];
+	let ratio = first;
+	const result = [ratio];
+	const actualShape = (shape / 10 + 1) * speed;
+
+	for (let i = 1; i < speed; i++) {
+		const x = i / (speed - 1);
+		ratio -= ratio / (actualShape * x + first);
+		result.push(ratio);
+	}
+	return result;
 };
