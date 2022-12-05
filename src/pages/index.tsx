@@ -9,9 +9,12 @@ import { calculateGearing } from "@/libs/gearingCalculator";
 
 const Home: NextPage = () => {
 	const [speed, setSpeed] = useState(6);
+	const [heavy, setHeavy] = useState(2);
 	const [shape, setShape] = useState(0);
 	const [first, setFirst] = useState(3);
-	const [gears, setGears] = useState(calculateGearing(speed, shape, first));
+	const [gears, setGears] = useState(
+		calculateGearing(speed, heavy, shape, first)
+	);
 
 	return (
 		<>
@@ -26,6 +29,7 @@ const Home: NextPage = () => {
 						gears={gears}
 						setGears={setGears}
 						speed={speed}
+						heavy={heavy}
 						shape={shape}
 						first={first}
 					/>
@@ -34,6 +38,8 @@ const Home: NextPage = () => {
 					<InputCard
 						speed={speed}
 						setSpeed={setSpeed}
+						heavy={heavy}
+						setHeavy={setHeavy}
 						shape={shape}
 						setShape={setShape}
 						first={first}

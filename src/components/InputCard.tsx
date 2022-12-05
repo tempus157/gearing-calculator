@@ -6,6 +6,8 @@ import { Dispatch, SetStateAction } from "react";
 interface InputCardProps {
 	speed: number;
 	setSpeed: Dispatch<SetStateAction<number>>;
+	heavy: number;
+	setHeavy: Dispatch<SetStateAction<number>>;
 	shape: number;
 	setShape: Dispatch<SetStateAction<number>>;
 	first: number;
@@ -15,6 +17,8 @@ interface InputCardProps {
 const InputCard = ({
 	speed,
 	setSpeed,
+	heavy,
+	setHeavy,
 	shape,
 	setShape,
 	first,
@@ -33,11 +37,20 @@ const InputCard = ({
 					marks
 				/>
 				<SliderTextField
+					label="Gearing Heavy"
+					value={heavy}
+					setValue={setHeavy}
+					min={0}
+					max={10}
+					digit={0}
+					marks
+				/>
+				<SliderTextField
 					label="Gearing Shape"
 					value={shape}
 					setValue={setShape}
-					min={-5}
-					max={5}
+					min={-10}
+					max={10}
 					digit={0}
 					marks
 				/>

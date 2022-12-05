@@ -31,6 +31,7 @@ interface OutputCardProps {
 	gears: number[];
 	setGears: Dispatch<SetStateAction<number[]>>;
 	speed: number;
+	heavy: number;
 	shape: number;
 	first: number;
 }
@@ -39,6 +40,7 @@ const OutputCard = ({
 	gears,
 	setGears,
 	speed,
+	heavy,
 	shape,
 	first,
 }: OutputCardProps) => {
@@ -49,7 +51,7 @@ const OutputCard = ({
 	};
 
 	const handleCalculateClick = () => {
-		setGears(calculateGearing(speed, shape, first));
+		setGears(calculateGearing(speed, heavy, shape, first));
 	};
 
 	return (

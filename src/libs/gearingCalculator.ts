@@ -1,5 +1,6 @@
 export const calculateGearing = (
 	speed: number,
+	heavy: number,
 	shape: number,
 	first: number
 ) => {
@@ -9,7 +10,7 @@ export const calculateGearing = (
 
 	for (let i = 1; i < speed; i++) {
 		const x = i / (speed - 1);
-		ratio -= ratio / (actualShape * x + first);
+		ratio -= ratio / (actualShape * x + heavy);
 		result.push(ratio);
 	}
 	return result;
