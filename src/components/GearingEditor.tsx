@@ -1,4 +1,5 @@
 import { GEAR_DIGIT, GEAR_MAX, GEAR_MIN } from "@/libs/constant";
+import { Typography } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
 import SliderTextField from "./SliderTextField";
 
@@ -24,6 +25,11 @@ const GearingEditor = ({ gears, setGears }: GearingEditorProps) => {
 	return (
 		<>
 			{gears.map((gear, i) => (
+				<Typography>
+					{i + 1}: {gear.toFixed(2)}
+				</Typography>
+			))}
+			{/* {gears.map((gear, i) => (
 				<SliderTextField
 					key={i}
 					label={`${i + 1}${ordinalSuffix[i]}`}
@@ -38,7 +44,7 @@ const GearingEditor = ({ gears, setGears }: GearingEditorProps) => {
 					limitMax={i === 0 ? GEAR_MAX : gears[i - 1]}
 					digit={GEAR_DIGIT}
 				/>
-			))}
+			))} */}
 		</>
 	);
 };
